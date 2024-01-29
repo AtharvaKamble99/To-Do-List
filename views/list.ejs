@@ -1,0 +1,38 @@
+<%- include('header'); -%>
+
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <span class="navbar-text"> Navbar </span>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <h1><%= day %></h1>
+  <form action="/todo/add" method="post" class="d-flex align-items-center my-5">
+    <input
+      type="text"
+      name="newItem"
+      class="form-control"
+      placeholder="Enter new Task"
+    />
+    <button
+      type="submit"
+      class="btn btn-md btn-outline-primary mx-2 custom-button"
+      autocomplete="off"
+    >
+      Add
+    </button>
+  </form>
+  <ul class="list-group my-5">
+    <% todoall.forEach(item => { %>
+    <li class="list-group-item">
+      <%= item.title %>
+      <a href="/delete/todo/<%=item._id %>" class="btn btn-danger btn-sm"
+        >Delete</a
+      >
+    </li>
+    <% }) %>
+  </ul>
+</div>
+
+<%- include('footer'); -%>
